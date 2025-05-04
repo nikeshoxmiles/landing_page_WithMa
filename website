@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>擺脫業績焦慮：用AI打造自媒體，讓客戶自己找上門！</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* 自訂基本樣式 */
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif; /* 使用 Inter 字體，並提供備用中文字體 */
+            scroll-behavior: smooth; /* 平滑滾動效果 */
+        }
+        /* 針對按鈕增加一些視覺效果 */
+        .cta-button {
+            transition: all 0.3s ease; /* 平滑過渡效果 */
+        }
+        .cta-button:hover {
+            transform: translateY(-2px); /* 滑鼠懸停時輕微上移 */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* 增加陰影 */
+        }
+        /* 區塊間距 */
+        section {
+            padding-top: 4rem;    /* 區塊上方內距 64px */
+            padding-bottom: 4rem; /* 區塊下方內距 64px */
+        }
+        @media (min-width: 768px) { /* 中等螢幕以上 */
+            section {
+                padding-top: 6rem;    /* 區塊上方內距 96px */
+                padding-bottom: 6rem; /* 區塊下方內距 96px */
+            }
+        }
+        /* FAQ 收合圖示 */
+        details > summary {
+            list-style: none; /* 隱藏預設的三角圖示 */
+        }
+        details > summary::-webkit-details-marker {
+            display: none; /* 隱藏 Chrome/Safari 的預設圖示 */
+        }
+        /* 付款資訊樣式 - 更新 */
+        .payment-details p {
+            margin-bottom: 0.25rem; /* mb-1 */
+            color: #374151; /* text-gray-700 */
+        }
+        .payment-details strong {
+             color: #1F2937; /* text-gray-800 */
+             font-weight: 600;
+        }
+
+        /* 社群連結樣式 */
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem; /* gap-2 */
+            color: #4B5563; /* text-gray-600 */
+            transition: color 0.3s ease;
+            font-size: 0.875rem; /* text-sm */
+        }
+        .social-link:hover {
+            color: #1D4ED8; /* hover:text-blue-700 */
+        }
+        .social-link i {
+            width: 1rem; /* w-4 */
+            text-align: center;
+        }
+        /* 產出承諾樣式 - 更新 */
+        .output-promise {
+            background-color: #ffffff; /* bg-white */
+            padding: 1.5rem; /* p-6 */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+            margin-top: 2rem; /* mt-8 */
+            border-left: 4px solid #3B82F6; /* border-l-4 border-blue-500 */
+        }
+        .output-promise h3 {
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 600; /* font-semibold */
+            color: #1E3A8A; /* text-blue-800 */
+            margin-bottom: 1rem; /* mb-4 */
+            text-align: center;
+        }
+        .output-promise ul {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem; /* space-y-4 */
+            align-items: flex-start; /* 改為靠左對齊 */
+            max-width: max-content; /* 讓寬度自適應內容 */
+            margin-left: auto;
+            margin-right: auto;
+        }
+         @media (min-width: 768px) { /* md: */
+            .output-promise ul {
+                 gap: 1.5rem; /* space-x-6 */
+                 align-items: center; /* 水平排列時置中 */
+            }
+         }
+        .output-promise li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem; /* gap-2 */
+            font-weight: 500; /* font-medium */
+            color: #374151; /* text-gray-700 */
+        }
+        .output-promise li i {
+            color: #3B82F6; /* text-blue-600 */
+            width: 1.25rem; /* w-5 */
+            text-align: center;
+            flex-shrink: 0; /* 防止圖示被壓縮 */
+        }
+        /* 品質參考連結樣式 */
+        .quality-link {
+            font-size: 0.75rem; /* text-xs */
+            color: #6B7280; /* text-gray-500 */
+            margin-left: 0.5rem; /* ml-2 */
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        .quality-link:hover {
+            color: #3B82F6; /* hover:text-blue-600 */
+        }
+
+        /* Banner圖片樣式 */
+        .banner-image {
+             width: 100%; /* 圖片寬度佔滿容器 */
+             height: auto; /* 高度自動調整 */
+             display: block; /* 避免圖片下方產生空隙 */
+        }
+        /* 更新：痛點區塊卡片樣式 */
+        .pain-card {
+            background-color: #F9FAFB; /* bg-gray-50 */
+            border: 1px solid #E5E7EB; /* border border-gray-200 */
+            border-radius: 0.75rem; /* rounded-xl */
+            padding: 1.5rem; /* p-6 */
+            text-align: center;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* shadow-sm */
+            transition: all 0.3s ease;
+        }
+        .pain-card:hover {
+             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* hover:shadow-lg */
+             transform: translateY(-4px); /* hover:-translate-y-1 */
+        }
+        .pain-card i {
+            font-size: 2rem; /* text-3xl */
+            color: #EF4444; /* text-red-500 */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+         .pain-card p {
+            font-size: 1.125rem; /* text-lg */
+            color: #374151; /* text-gray-700 */
+            line-height: 1.6; /* leading-relaxed */
+         }
+         .pain-card.highlight { /* 強調卡片 */
+            background-color: #FEF3C7; /* bg-amber-100 */
+            border-color: #FCD34D; /* border-amber-300 */
+         }
+         .pain-card.highlight i {
+             color: #F59E0B; /* text-amber-500 */
+         }
+         .pain-card.solution-hint { /* 暗示解方卡片 */
+             background-color: #DBEAFE; /* bg-blue-100 */
+             border-color: #93C5FD; /* border-blue-300 */
+         }
+          .pain-card.solution-hint i {
+             color: #3B82F6; /* text-blue-500 */
+         }
+         /* 課程內容列表樣式 */
+         .content-list li {
+            position: relative;
+            padding-left: 1.75rem; /* pl-7 */
+            margin-bottom: 0.75rem; /* mb-3 */
+         }
+         .content-list li::before {
+            content: "\f00c"; /* Font Awesome check icon */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0.1em;
+            color: #16A34A; /* text-green-600 */
+            font-size: 1rem; /* text-base */
+         }
+         /* 目標學員區塊更新 */
+         .audience-card {
+             background-color: #F9FAFB; /* bg-gray-50 */
+             padding: 1.5rem; /* p-6 */
+             border-radius: 0.75rem; /* rounded-xl */
+             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* shadow-sm */
+             text-align: left;
+             display: flex;
+             flex-direction: column;
+             height: 100%; /* 確保卡片等高 */
+         }
+         .audience-card .icon {
+             font-size: 2rem; /* text-3xl */
+             color: #6366F1; /* text-indigo-500 */
+             margin-bottom: 1rem; /* mb-4 */
+             text-align: center;
+         }
+         .audience-card h3 {
+             font-size: 1.125rem; /* text-lg */
+             font-weight: 600; /* font-semibold */
+             color: #1F2937; /* text-gray-800 */
+             margin-bottom: 0.75rem; /* mb-3 */
+             text-align: center;
+         }
+         .audience-card .before-after {
+             font-size: 0.875rem; /* text-sm */
+             color: #4B5563; /* text-gray-600 */
+             line-height: 1.6; /* leading-relaxed */
+             flex-grow: 1; /* 讓內容填滿剩餘空間 */
+         }
+         .audience-card .before-after strong {
+             font-weight: 600;
+         }
+         .audience-card .before {
+            color: #EF4444; /* text-red-500 */
+            margin-bottom: 0.5rem; /* mb-2 */
+         }
+         .audience-card .after {
+            color: #10B981; /* text-emerald-500 */
+         }
+         .audience-card .arrow {
+             display: block;
+             text-align: center;
+             font-size: 1.25rem; /* text-xl */
+             color: #9CA3AF; /* text-gray-400 */
+             margin: 0.25rem 0; /* my-1 */
+         }
+
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-gradient-to-b from-blue-100 to-gray-50 pt-16 md:pt-24 text-center">
+        <div class="container mx-auto px-6">
+            <div class="mb-8">
+                <img src="https://img1.pixhost.to/images/5502/594993415_.png" alt="課程主視覺 Banner：擺脫業績焦慮，用AI打造自媒體" class="banner-image max-w-4xl mx-auto rounded-lg shadow-md" onerror="this.onerror=null; this.src='https://placehold.co/1200x400/EBF4FF/4A5568?text=課程主視覺圖'">
+            </div>
+            <h1 class="text-3xl md:text-5xl font-bold text-blue-800 mb-4 leading-tight pt-8">
+                擺脫業績焦慮：<br class="md:hidden">用AI打造自媒體，<br>讓客戶自己找上門！
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                專為「業績焦慮」的你設計。停止盲目開發，學會用 AI 精準定位，打造你的「吸客」個人品牌。
+            </p>
+            <a href="#register" class="cta-button inline-block bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-8 rounded-lg shadow-md mb-16 md:mb-24">
+                立即了解詳情，搶佔名額！
+            </a>
+        </div>
+    </header>
+
+    <div class="bg-white py-8 md:py-12">
+        <div class="container mx-auto px-6">
+             <img src="https://img1.pixhost.to/images/5502/594993380_reallygreatsite-1500-x-630-px.png" alt="課程痛點 Banner：你是否也遇到這些困境？" class="banner-image max-w-5xl mx-auto rounded-lg shadow-md" onerror="this.onerror=null; this.src='https://placehold.co/1500x630/FFFFFF/4A5568?text=痛點說明 Banner'">
+        </div>
+    </div>
+
+    <section id="pain-points" class="bg-white pt-8 md:pt-12">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 mb-12">每天忙碌奔波，卻依然焦慮？</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="pain-card">
+                    <i class="fas fa-bolt"></i>
+                    <p>業績壓力山大？<br>陌生開發頻頻卡關？</p>
+                </div>
+                <div class="pain-card">
+                     <i class="fas fa-tired"></i>
+                     <p>每月追著數字跑，心好累？<br>開發碰壁、內容難產... 你累了嗎？</p>
+                </div>
+                <div class="pain-card highlight">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>別再跑斷腿！<br>渴望客戶主動找上門？</p>
+                </div>
+                 <div class="pain-card">
+                    <i class="fas fa-pencil-alt"></i>
+                    <p>想做自媒體卻沒方向？<br>還在為沒名單、沒內容煩惱？</p>
+                </div>
+                <div class="pain-card solution-hint">
+                   <i class="fas fa-robot"></i>
+                   <p>沒時間寫文案？<br>AI 就是你的新武器！</p>
+                </div>
+                <div class="pain-card highlight">
+                    <i class="fas fa-bullseye"></i>
+                    <p>停止無效努力，<br>讓自媒體為你自動引流！</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution" class="bg-blue-50">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl md:text-3xl font-semibold text-blue-800 mb-8">
+                <span class="text-blue-600">「擺脫業績焦慮：用AI打造自媒體」</span><br>就是你的業績解方！
+            </h2>
+            <div class="mb-8">
+                <img src="https://img1.pixhost.to/images/5502/594995180_.png" alt="課程解決方案 Banner" class="banner-image max-w-3xl mx-auto rounded-lg shadow-md" onerror="this.onerror=null; this.src='https://placehold.co/1000x300/DBEAFE/1E40AF?text=解決方案示意圖'">
+            </div>
+            <p class="text-xl md:text-2xl font-medium text-gray-700 mb-8 pt-8"> 這不只是一堂課，這是你業績翻轉的<span class="text-blue-600 font-semibold">「實戰工作坊」</span>！
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto text-left">
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
+                    <h3 class="text-lg font-semibold text-blue-700 mb-2">🎯 精準定位</h3>
+                    <p class="text-gray-600">找到你獨一無二的「個人品牌」，讓對的客戶看見你。<span class="block text-sm text-gray-500">(不再大海撈針)</span></p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
+                    <h3 class="text-lg font-semibold text-blue-700 mb-2">🤖 AI 賦能</h3>
+                    <p class="text-gray-600">學會用 AI 高效產出「吸睛內容」，告別文案卡關。<span class="block text-sm text-gray-500">(省時又省力)</span></p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
+                    <h3 class="text-lg font-semibold text-blue-700 mb-2">✍️ 實戰產出</h3>
+                    <p class="text-gray-600">課堂直接「動手做」，帶走的不只方法，還有成果。<span class="block text-sm text-gray-500">(馬上能用)</span></p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
+                    <h3 class="text-lg font-semibold text-blue-700 mb-2">👨‍🏫 專家點評</h3>
+                    <p class="text-gray-600">講師「親自指導」，兩次優化，確保方向正確。<span class="block text-sm text-gray-500">(少走冤枉路)</span></p>
+                </div>
+            </div>
+            <p class="mt-8 text-lg text-gray-700 font-medium">
+                <span class="font-semibold text-blue-800">目標：</span>讓你建立一套「客戶自動找上門」的自媒體系統。
+            </p>
+
+            <div class="output-promise max-w-3xl mx-auto">
+                <h3><i class="fas fa-rocket mr-2"></i>一天實戰，保證帶走！</h3>
+                <ul>
+                    <li>
+                        <i class="fas fa-file-alt"></i> 5 篇以上文章
+                        <a href="https://vocus.cc/article/67cf92a7fd89780001ad9e32" target="_blank" rel="noopener noreferrer" class="quality-link">(品質參考)</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-podcast"></i> 5 集以上 Podcast
+                        <a href="https://open.firstory.me/user/ai/episodes" target="_blank" rel="noopener noreferrer" class="quality-link">(品質參考)</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-video"></i> 5 支以上短影片
+                         <a href="https://www.tiktok.com/@ponymentor" target="_blank" rel="noopener noreferrer" class="quality-link">(品質參考)</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="content" class="bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 mb-12 text-center">
+                <span class="text-blue-600">AI打造自媒體</span> 一日實戰流程
+            </h2>
+            <div class="flex flex-col md:flex-row gap-8 lg:gap-12 max-w-6xl mx-auto">
+                <div class="flex-1 bg-yellow-50 p-6 md:p-8 rounded-lg shadow-md border-l-4 border-yellow-400">
+                    <h3 class="text-xl font-semibold text-yellow-800 mb-4">上午 (90分鐘)：【定錨】找到你的吸客黃金定位</h3>
+                    <p class="text-sm text-gray-600 mb-4">由 <span class="font-medium">何在群 (小馬老師)</span> 主講</p>
+                    <p class="text-gray-700 mb-4">釐清個人品牌核心，為下午的 AI 內容產出打下堅實基礎，確保方向正確，讓客戶更容易被你吸引。</p>
+                    <ul class="content-list text-gray-700 text-left">
+                        <li>挖掘你的獨特價值 (背景/專長/個性/熱情)</li>
+                        <li>講師顧問式引導，釐清個人品牌風格與方向 (知識型？趣味型？實用型？)</li>
+                        <li>小組深度討論，激盪定位火花</li>
+                        <li class="mt-4 font-semibold text-yellow-900">產出：清晰的個人品牌定位圖 & 初步內容主題方向</li>
+                    </ul>
+                </div>
+                <div class="flex-1 bg-green-50 p-6 md:p-8 rounded-lg shadow-md border-l-4 border-green-400">
+                    <h3 class="text-xl font-semibold text-green-800 mb-4">下午 (4.5小時)：【加速】AI 高效內容產出與打磨</h3>
+                     <p class="text-sm text-gray-600 mb-4">由 <span class="font-medium">黃敬峰 (阿峰老師)</span> 主講</p>
+                     <p class="text-gray-700 mb-4">掌握頂尖 AI 工具，學習如何根據上午的定位，快速、大量、且高品質地生成專屬於你的自媒體內容。</p>
+                    <ul class="content-list text-gray-700 text-left">
+                        <li><span class="font-medium">AI 工具實戰：</span>掌握 ChatGPT / Grok / Gemini 等工具，實現<span class="text-green-700 font-semibold">「一分鐘高效生成」</span>。</li>
+                        <li><span class="font-medium">個人化內容產出：</span>學習根據你的 IP 定位、背景、價值觀，<span class="text-green-700 font-semibold">量身打造</span>文章 / Podcast 腳本 / TikTok 腳本。</li>
+                        <li><span class="font-medium">AI 內容煉金術：</span>學習運用 AI 分析、轉化全球專業人士的影片/音頻/文章，<span class="text-green-700 font-semibold">提煉成你的獨特內容</span>。</li>
+                        <li><span class="font-medium">AI 聲音克隆：</span>體驗 The Keeper AI (Kickbox 出品)，<span class="text-green-700 font-semibold">複製你的聲音</span>，應用於 Podcast/短影音 (提供學員免費額度)。</li>
+                        <li><span class="font-medium">兩輪專家點評與優化：</span>講師<span class="text-green-700 font-semibold">親自指導</span>，確保你的內容不僅產出，更能有效吸客。</li>
+                        <li class="mt-4 font-semibold text-green-900">產出：帶走至少 5 篇優化文章 + 5 集 Podcast 腳本 + 5 支短影音腳本初稿</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="mt-12 text-center text-lg font-medium text-gray-700">
+                <span class="font-semibold text-indigo-700">「擺脫業績焦慮：用AI打造自媒體」</span>的獨特之處：<br>我們重視「做中學」與「迭代優化」，確保你學到更能做到！
+            </p>
+        </div>
+    </section>
+
+    <section id="instructor" class="bg-gray-100">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 mb-12 text-center">誰來帶你飛？<br>業界頂尖名師聯手，助你<span class="text-blue-600">擺脫業績焦慮</span>！</h2>
+
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-16">
+                <div class="flex-shrink-0">
+                    <img src="https://img1.pixhost.to/images/5501/594979756_.png" alt="講師 何在群 (小馬老師) 照片" class="w-48 h-48 md:w-64 md:h-64 rounded-full shadow-lg object-cover mx-auto" onerror="this.onerror=null; this.src='https://placehold.co/300x300/E5E7EB/1F2937?text=小馬老師照片'">
+                </div>
+                <div class="text-center md:text-left flex-grow">
+                    <h3 class="text-xl md:text-2xl font-semibold text-blue-700 mb-3">何在群 (小馬老師)</h3>
+                    <p class="text-lg text-gray-600 mb-4 font-medium">上午【定錨】課程主講</p>
+                    <div class="text-gray-700 space-y-3 text-left mb-4">
+                        <p>資深企業輔導顧問、激勵講師、領導教練與團隊建立（Team Building）導師。</p>
+                        <p>擁有超過 <span class="font-semibold">25年</span> 企業輔導與培訓經驗，陪跑、輔導過 <span class="font-semibold">上千家</span> 企業，專精於企業培訓、團隊共識營、跨部門溝通、主管領導與目標設定等主題。</p>
+                        <p>曾任興采實業股份有限公司人資代課長，長期服務於企業內訓、團建活動，協助企業從人治轉型為制度化管理。</p>
+                        <p>擅長運用 <span class="font-semibold">AI工具</span> 與 <span class="font-semibold">體驗式教學</span>，設計符合Z世代學習需求的課程，強調實務演練與陪跑落地。</p>
+                        <p>積極經營自媒體（FB、TikTok、IG、YouTube），個人IP流量已成功變現，粉絲數突破萬人。</p>
+                        <p>被稱為「頭家醫生」、「小馬學長」，經常受邀至企業、學校及公開場合授課。</p>
+                    </div>
+                    <div class="flex flex-wrap gap-x-4 gap-y-2 justify-center md:justify-start">
+                        <a href="https://ponyhomentor.com/" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <i class="fas fa-globe"></i> 網站
+                        </a>
+                        <a href="https://www.instagram.com/ho_pony/" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <i class="fab fa-instagram"></i> IG (1萬+追蹤)
+                        </a>
+                        <a href="https://www.tiktok.com/@ponymentor" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <i class="fab fa-tiktok"></i> TikTok (15萬+讚)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-gray-300 my-12 md:my-16">
+
+            <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12">
+                 <div class="flex-shrink-0">
+                    <img src="https://img1.pixhost.to/images/5501/594979797_.jpg" alt="講師 黃敬峰 (阿峰老師) 照片" class="w-48 h-48 md:w-64 md:h-64 rounded-full shadow-lg object-cover mx-auto" onerror="this.onerror=null; this.src='https://placehold.co/300x300/E5E7EB/1F2937?text=阿峰老師照片'">
+                </div>
+                <div class="text-center md:text-left flex-grow">
+                    <h3 class="text-xl md:text-2xl font-semibold text-green-700 mb-3">黃敬峰 (阿峰老師)</h3>
+                    <p class="text-lg text-gray-600 mb-4 font-medium">下午【加速】課程主講</p>
+                    <div class="text-gray-700 space-y-4 text-left mb-4">
+                        <p>企業 AI 知名培訓老師，輔導逾 <span class="font-semibold">400 間</span> 企業與機構導入 AI 與數位工具，提升營運績效。</p>
+                        <p>前行政院青年事務委員會副召集人、新北市青年事務委員、國立東華大學創新育成中心企業輔導顧問。</p>
+                        <div>
+                            <p class="font-semibold mb-1">教學特色：</p>
+                            <ul class="list-disc list-inside space-y-1 text-sm">
+                                <li><span class="font-medium">深入淺出，化繁為簡：</span> 將複雜 AI 技術轉化為易懂實用知識。</li>
+                                <li><span class="font-medium">實戰導向，即學即用：</span> 結合工作場景，大量實操演練，立即提升效率。</li>
+                                <li><span class="font-medium">互動式教學，活潑生動：</span> 氣氛輕鬆，鼓勵提問討論，學習充滿樂趣。</li>
+                                <li><span class="font-medium">前沿技術，與時俱進：</span> 持續更新最新 AI 工具與趨勢。</li>
+                            </ul>
+                        </div>
+                        <p>深受指標性企業與政府單位肯定，合作夥伴包含：台灣理光、華碩電腦、南山人壽、蝦皮、歐德傢俱、裕隆日產、數位發展部、勞動部等。</p>
+                    </div>
+                     <div class="flex flex-wrap gap-x-4 gap-y-2 justify-center md:justify-start">
+                        <a href="https://peaker.com.tw/ai" target="_blank" rel="noopener noreferrer" class="social-link">
+                           <i class="fas fa-globe"></i> 網站 (AI設計製作)
+                        </a>
+                        <a href="https://www.facebook.com/nikeshoxmiles" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <i class="fab fa-facebook"></i> FB (1600人+追蹤)
+                        </a>
+                        <a href="https://vocus.cc/salon/StartupForYou" target="_blank" rel="noopener noreferrer" class="social-link">
+                           <i class="fas fa-blog"></i> 部落格 (百篇AI文, 半年3.5萬閱覽, 30%完讀)
+                        </a>
+                         <a href="https://open.firstory.me/user/ai/episodes" target="_blank" rel="noopener noreferrer" class="social-link">
+                           <i class="fas fa-podcast"></i> Podcast (AI主持, 半年萬人聽, 超越50%科技節目)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="audience" class="bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 mb-8">誰最該來<span class="text-blue-600">「用AI打造自媒體」</span>？</h2>
+            <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">如果你符合以下描述，這堂課就是為你量身打造，<span class="font-semibold">讓客戶自己找上門</span>：</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="audience-card">
+                    <div class="icon">💼</div>
+                    <h3>業務人員</h3>
+                    <div class="before-after">
+                        <p class="before"><strong>Before:</strong> 業績壓力大，陌生開發碰壁，名單告急，心力交瘁。</p>
+                        <div class="arrow">↓</div>
+                        <p class="after"><strong>After:</strong> 掌握 AI 引流，建立專業形象，客戶主動詢問，業績穩定增長。</p>
+                    </div>
+                </div>
+                 <div class="audience-card">
+                    <div class="icon">🧑‍🏫</div>
+                    <h3>專業人士/顧問/講師</h3>
+                     <div class="before-after">
+                        <p class="before"><strong>Before:</strong> 專業知識豐富，但缺乏有效管道擴大影響力，案源不穩定。</p>
+                         <div class="arrow">↓</div>
+                        <p class="after"><strong>After:</strong> 透過 AI 高效產出內容，打造權威形象，吸引精準合作機會與學員。</p>
+                    </div>
+                </div>
+                <div class="audience-card">
+                     <div class="icon">🚀</div>
+                    <h3>創業者/斜槓青年</h3>
+                     <div class="before-after">
+                        <p class="before"><strong>Before:</strong> 滿腔熱血，但缺乏行銷資源，不知如何有效曝光、獲取早期客戶。</p>
+                         <div class="arrow">↓</div>
+                        <p class="after"><strong>After:</strong> 學會低成本、高效率的 AI 自媒體經營術，快速驗證市場，加速事業起飛。</p>
+                    </div>
+                </div>
+                <div class="audience-card">
+                     <div class="icon">💻</div>
+                    <h3>職場工作者</h3>
+                     <div class="before-after">
+                        <p class="before"><strong>Before:</strong> 日常工作繁忙，想提升數位能力，卻不知從何學起，擔心被 AI 取代。</p>
+                         <div class="arrow">↓</div>
+                        <p class="after"><strong>After:</strong> 掌握實用 AI 工具，提升工作效率與價值，甚至開啟個人品牌副業。</p>
+                    </div>
+                </div>
+                <div class="audience-card">
+                     <div class="icon">💡</div>
+                    <h3>想探索第二曲線者</h3>
+                     <div class="before-after">
+                        <p class="before"><strong>Before:</strong> 擁有豐富經驗或興趣，想分享價值、開創人生新階段，但缺乏方向。</p>
+                         <div class="arrow">↓</div>
+                        <p class="after"><strong>After:</strong> 找到個人品牌定位，運用 AI 將經驗轉化為影響力，開啟事業第二春。</p>
+                    </div>
+                </div>
+                 <div class="audience-card border-dashed border-gray-300 flex items-center justify-center">
+                     <p class="text-gray-400 text-center">以及<br>任何想學習 AI<br>提升個人價值的人！</p>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="bg-blue-50">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl md:text-3xl font-semibold text-blue-800 mb-10">聽聽學長姐怎麼說</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow text-left">
+                    <p class="text-gray-700 italic mb-4">「之前只上了老師們半天的企業內訓，就讓我對個人品牌有了全新認識！用 AI 產出內容真的快很多，<span class="font-semibold text-blue-600">當天就完成了 3 篇貼文草稿</span>。超級期待這次完整的課程！」</p>
+                    <p class="font-semibold text-gray-800">— 陳 O O，保險業務</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow text-left">
+                    <p class="text-gray-700 italic mb-4">「小馬老師的定位指導非常精準，阿峰老師的 AI 教學更是讓我大開眼界！以前覺得做 Podcast 很難，沒想到<span class="font-semibold text-blue-600">用 AI 輔助，幾分鐘就生出 2 集腳本</span>！這堂課絕對值回票價！」</p>
+                    <p class="font-semibold text-gray-800">— 林 O 姐，直銷業務總監</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow text-left">
+                    <p class="text-gray-700 italic mb-4">「原本對 AI 還有點疑慮，但老師們把工具和策略結合得太好了！<span class="font-semibold text-blue-600">課堂上實際操作，馬上做出 3 支短影音腳本</span>，而且客戶詢問度真的變高了！強烈推薦給想突破的業務夥伴！」</p>
+                    <p class="font-semibold text-gray-800">— 張 O O，企管顧問</p>
+                </div>
+            </div>
+            <div class="mt-10 text-gray-600">
+                <p class="mb-2">🏆 結合兩位老師專長，超過 <span class="font-semibold">2000+</span> 位學員與 <span class="font-semibold">250+</span> 企業的口碑推薦！</p>
+                </div>
+        </div>
+    </section>
+
+    <section id="register" class="bg-gradient-to-b from-gray-50 to-blue-100">
+        <div class="container mx-auto px-6 text-center max-w-3xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-6">
+                立即報名「用AI打造自媒體」<br>開啟客戶自動上門模式！
+            </h2>
+            <div class="bg-white p-8 rounded-lg shadow-xl mb-8 text-left space-y-4">
+                <p><strong class="text-gray-800">📅 日期：</strong> 2025/6/22 (日)</p>
+                <p><strong class="text-gray-800">⏰ 時間：</strong> 09:00 - 16:00</p>
+                <p><strong class="text-gray-800">📍 地點/形式：</strong> [請填寫 線上 或 實體地點]</p>
+                <div class="border-t pt-4 mt-4">
+                    <p class="text-lg font-semibold text-gray-800 mb-2">💰 投資費用：</p>
+                    <p><span class="line-through text-gray-500">原價：NT$ 12,000</span></p>
+                    <p class="text-2xl font-bold text-red-600">限時早鳥價：NT$ 6,999 <span class="text-sm font-normal text-red-500">(只到 2025/5/31，錯過不再！)</span></p>
+                    <p class="text-lg text-green-700 font-medium">兩人同行價：NT$ 5,499 /人</p>
+                </div>
+                <p class="text-yellow-700 font-semibold"><strong class="text-gray-800">👥 名額：</strong> 僅限 30 席 <span class="text-sm font-normal">(小班制，確保教學品質)</span></p>
+                 <div>
+                     <strong class="text-gray-800">🎁 費用包含：</strong>
+                     <ul class="list-disc list-inside mt-1 text-gray-700 text-sm space-y-1">
+                         <li>全天課程</li>
+                         <li>實戰講義</li>
+                         <li>午餐 (若為實體課程)</li>
+                         <li>TheKeeperAI 帳號 (獨家！只有透過阿峰老師才有)</li>
+                         <li>AI 工具清單</li>
+                         <li>1 分鐘 Podcast 逐字稿提示詞檔案</li>
+                         <li>1 分鐘短影音逐字稿提示詞檔案</li>
+                         <li>1 分鐘專業文章撰寫提示詞檔案</li>
+                         <li>課後交流群組</li>
+                     </ul>
+                 </div>
+                 <div>
+                     <strong class="text-gray-800">💳 付款方式：</strong> 轉帳
+                     <div class="payment-details mt-1 text-sm">
+                         <p><strong>【匯款銀行】</strong> 台新銀行 (812)</p>
+                         <p><strong>【匯款分行】</strong> 三和分行 (0698)</p>
+                         <p><strong>【匯款戶名】</strong> 交點文化股份有限公司</p>
+                         <p><strong>【匯款帳號】</strong> 20690100002452</p>
+                     </div>
+                 </div>
+            </div>
+            <a href="https://forms.gle/kwEC7XyS9pcRFne86" target="_blank" rel="noopener noreferrer" class="cta-button inline-block bg-red-600 hover:bg-red-700 text-white text-xl font-bold py-4 px-10 rounded-lg shadow-lg mb-2">
+                我要報名！立即擺脫業績焦慮！
+            </a>
+            <p class="text-sm text-gray-600">點擊上方按鈕，前往報名表單</p>
+        </div>
+    </section>
+
+    <section id="faq" class="bg-white">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 mb-8 text-center">常見問題</h2>
+            <div class="space-y-6">
+                <details class="bg-gray-50 p-4 rounded-lg shadow group">
+                    <summary class="font-semibold text-gray-700 cursor-pointer flex justify-between items-center">
+                        完全不懂 AI 可以上嗎？
+                        <span class="transform transition-transform duration-300 group-open:rotate-180">▼</span>
+                    </summary>
+                    <p class="mt-3 text-gray-600">絕對可以！阿峰老師會從基礎觀念和實際操作教起，不用擔心技術門檻，重點是學會如何「運用」AI 來幫助你。</p>
+                </details>
+                <details class="bg-gray-50 p-4 rounded-lg shadow group">
+                    <summary class="font-semibold text-gray-700 cursor-pointer flex justify-between items-center">
+                        我的行業很特別，課程有用嗎？
+                        <span class="transform transition-transform duration-300 group-open:rotate-180">▼</span>
+                    </summary>
+                    <p class="mt-3 text-gray-600">核心的「個人品牌定位」(小馬老師)和「AI 內容產出」(阿峰老師)方法是通用的。課程會引導你思考如何結合自身行業特點，找到獨特的切入點，讓方法落地。</p>
+                </details>
+                <details class="bg-gray-50 p-4 rounded-lg shadow group">
+                    <summary class="font-semibold text-gray-700 cursor-pointer flex justify-between items-center">
+                        需要自己帶電腦嗎？
+                        <span class="transform transition-transform duration-300 group-open:rotate-180">▼</span>
+                    </summary>
+                    <p class="mt-3 text-gray-600">強烈建議攜帶筆記型電腦，因為下午的 AI 實作環節需要實際操作 AI 工具才能達到最佳學習效果。</p>
+                </details>
+                <details class="bg-gray-50 p-4 rounded-lg shadow group">
+                    <summary class="font-semibold text-gray-700 cursor-pointer flex justify-between items-center">
+                        課後會有支援嗎？
+                        <span class="transform transition-transform duration-300 group-open:rotate-180">▼</span>
+                    </summary>
+                    <p class="mt-3 text-gray-600">是的，報名學員將可加入專屬的課後交流群組，方便同學間互相交流、提問，講師也會在群組中提供必要的協助與資源分享。</p>
+                </details>
+                 </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-gray-300 py-8">
+        <div class="container mx-auto px-6 text-center text-sm">
+            <p class="mb-2">主辦單位：交點文化股份有限公司、群燿企管顧問有限公司</p>
+            <p class="mb-4">聯絡方式：nikeshoxmiles@gmail.com / 0976-715-102</p>
+            <div class="space-x-4">
+                <a href="#" class="hover:text-white hover:underline">隱私權政策</a>
+                <span>|</span>
+                <a href="#" class="hover:text-white hover:underline">服務條款</a>
+            </div>
+            <p class="mt-4 text-xs text-gray-500">&copy; 2025 交點文化股份有限公司 & 群燿企管顧問有限公司. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
