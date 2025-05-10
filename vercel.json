@@ -1,6 +1,7 @@
 {
   "rewrites": [
     { "source": "/ai-media-prompt-tool", "destination": "https://ai-media-prompt-tool.vercel.app" },
-    { "source": "/ai-media-prompt-tool/(.*)", "destination": "https://ai-media-prompt-tool.vercel.app/$1" }
+    { "source": "/ai-media-prompt-tool/(.*)", "destination": "https://ai-media-prompt-tool.vercel.app/$1" },
+    { "source": "/ai-media-prompt-tool/assets/(.*)", "destination": "https://ai-media-prompt-tool.vercel.app/assets/$1" }
   ]
 }
