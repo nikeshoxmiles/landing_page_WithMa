@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/ai-media-prompt-tool/:path*", "destination": "https://ai-media-prompt-tool-vercel.app/:path*" }
+  ]
+}
